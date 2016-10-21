@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - mini_proj@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="mini_proj">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="msg_project"/>
+    <schema id="4" name="msg_training"/>
+    <schema id="5" name="mysql"/>
+    <schema id="6" name="performance_schema"/>
+    <schema id="7" name="sys"/>
+    <table id="8" parent="1" name="cv"/>
+    <table id="9" parent="1" name="user"/>
+    <column id="10" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="11" parent="8" name="text">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="12" parent="8" name="title">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="13" parent="8" name="user_CNP">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="14" parent="8" name="FKi8dv6oo2r8fl1w8l7umsjcgh5">
+      <columns>user_CNP</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="15" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="16" parent="8" name="FKi8dv6oo2r8fl1w8l7umsjcgh5">
+      <columns>user_CNP</columns>
+      <ref-key>~.user.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="17" parent="9" name="CNP">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="18" parent="9" name="birthDate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="19" parent="9" name="firstName">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="20" parent="9" name="lastName">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="21" parent="9" name="PRIMARY">
+      <columns>CNP</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
