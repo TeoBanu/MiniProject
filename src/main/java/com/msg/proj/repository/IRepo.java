@@ -13,4 +13,6 @@ public interface IRepo<T, K> {
 
     List<T> readAll(Class<T> clazz);
 
+    void closeEm();
+
 }

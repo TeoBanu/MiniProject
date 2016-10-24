@@ -97,6 +97,7 @@ public class Menu {
     public void show() {
         System.out.println("1. Add CV");
         System.out.println("2. Search in CV by word");
+        System.out.println("3. Quit");
     }
 
     private void createCVEntity(User user, String filename) throws Exception {
@@ -119,5 +120,10 @@ public class Menu {
         } else {
             throw new Exception("Title must contain only digits and letters.");
         }
+    }
+
+    public void closeEntityManager() {
+        cvRepo.closeEm();
+        userRepo.closeEm();
     }
 }

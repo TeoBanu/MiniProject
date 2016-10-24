@@ -2,8 +2,14 @@ package com.msg.proj;
 
 import com.msg.proj.utils.Menu;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main {
 
+    static {
+        Logger.getLogger("org.hibernate").setLevel(Level.OFF);
+    }
 
     public static void main(String[] args) {
         Menu menu = new Menu();
@@ -19,6 +25,9 @@ public class Main {
                         break;
                     case 2:
                         menu.searchInCV();
+                        break;
+                    case 3:
+                        menu.closeEntityManager();
                         break;
                     default:
                         System.out.println("Unknown option.");

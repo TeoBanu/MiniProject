@@ -1,13 +1,15 @@
 package com.msg.proj.repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class GenericRepo<T, K> implements IRepo<T, K> {
 
-    protected EntityManager em = Persistence.createEntityManagerFactory("mini_proj").createEntityManager();
+    private EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("mini_proj");
+    protected EntityManager em = emFactory.createEntityManager();
 
     @Override
     public void create(T entity) {
@@ -46,5 +48,14 @@ public class GenericRepo<T, K> implements IRepo<T, K> {
         CriteriaQuery<T> criteria = em.getCriteriaBuilder().createQuery(clazz);
         criteria.select(criteria.from(clazz));
         return em.createQuery(criteria).getResultList();
+    }
+
+    public void closeEm() {
+        if(em.isOpen()) {
+            em.close();
+        }
+        if(emFactory.isOpen()) {
+            emFactory.close();
+        }
     }
 }
